@@ -790,7 +790,7 @@
       state: absent
     when:
       - ansible_pkg_mgr == 'yum'
-      - purge_all_packages == true
+      - purge_all_packages | bool
 
   - name: purge extra packages with dnf
     dnf:
@@ -798,7 +798,7 @@
       state: absent
     when:
       - ansible_pkg_mgr == 'dnf'
-      - purge_all_packages == true
+      - purge_all_packages | bool
 
   - name: purge extra packages with apt
     apt:
@@ -806,7 +806,7 @@
       state: absent
     when:
       - ansible_pkg_mgr == 'apt'
-      - purge_all_packages == true
+      - purge_all_packages | bool
 
   - name: remove config and any ceph socket left
     file:
